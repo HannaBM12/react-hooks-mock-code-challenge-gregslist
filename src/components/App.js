@@ -4,47 +4,32 @@ import ListingsContainer from "./ListingsContainer";
 
 function App() {
 
-  const[listings, setListings] = useState([])
-  const[search, setSearch] = useState(" ")
-  const [sort, setSort] = useState('')
+  const [items, setItems] = useState([])
+  const [searchItem, setSearchItem] = useState('')
 
-
-  useEffect(()=> {
-
-    fetch('http://localhost:6001/listings')
-    .then(res => res.json())
-    .then(listingData => {
-      setListings(listingData)
-    })
+  useEffect(()=>{
+      fetch('http://localhost:6001/listings')
+      .then (res => res.json())
+      .then(itemsData => {
+        setItems(itemsData)
+      })
   }, [])
 
-  function handleRemoveListing(listingObjId){
-    
-     const updatedListing = listings.filter(listing => 
-      listing.id !== listingObjId)
-      setListings(updatedListing)
+  function handleRemoveCard(cardObjId){
+    const updatedItems = items.filter(item =>
+      item.id !== cardObjId)
+      setItems(updatedItems)
+     
+
   }
 
-  function handleFormSubmit(newObj){
-     setListings([...listings, newObj])
-  }
-
-  function handleSearch(search){    
-    const updatedSearchList = listings.filter(listing =>
-        (listing.description.toLowerCase() === search.toString().toLowerCase())
-      )
-      setListings(updatedSearchList)
-  }
  
-  
+
 
   return (
     <div className="app">
-      <Header search onHandleSearch={handleSearch} search={search} setSearch={setSearch} 
-        sort={sort} setSort={setSort} onHandleFormSubmit={handleFormSubmit}/>
-
-      <ListingsContainer listings={listings} onHandleRemove={handleRemoveListing} 
-       onHandleSearch={handleSearch} search={search} sort={sort}/>
+      <Header searchItem={searchItem} setSearchItem={setSearchItem}/>
+      <ListingsContainer itemListings={items} onHandleRemove={handleRemoveCard} searchItem={searchItem}/>
     </div>
   );
 }
