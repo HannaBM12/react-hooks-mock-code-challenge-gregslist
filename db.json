@@ -41,6 +41,18 @@
       "description": "Treadmill Parts For Free",
       "image": "./images/treadmill.jpg",
       "location": "East Flatbush"
+    },
+    {
+      "description": "Piano",
+      "image": "https://markgoodwinpianos.co.uk/images/1351.jpg",
+      "location": "Silver Spring",
+      "id": 8
+    },
+    {
+      "description": "Chair",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2a7aYrRmXYmd28DoYUe_uT5a9jgXjxw-sAA&usqp=CAU",
+      "location": "Chevy Chase",
+      "id": 10
     }
   ]
 }
